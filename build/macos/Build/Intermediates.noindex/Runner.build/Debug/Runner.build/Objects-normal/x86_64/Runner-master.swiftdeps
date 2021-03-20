@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)"
+options: "153e6df68d515461a7708322be1bd723"
+build_time: [1616209117, 651232000]
+inputs:
+  "/Users/briangorman/development/stormingorman/tourney-bot/app/macos/Runner/MainFlutterWindow.swift": [1576078437, 0]
+  "/Users/briangorman/development/stormingorman/tourney-bot/app/macos/Runner/AppDelegate.swift": [1576078437, 0]
+  "/Users/briangorman/development/stormingorman/tourney-bot/app/macos/Flutter/GeneratedPluginRegistrant.swift": [1616209099, 291858644]

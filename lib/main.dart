@@ -57,10 +57,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void fetchScores() async {
     final scoreboard = Scoreboard();
-    final games = await scoreboard.games();
-    setState(() {
-      this.games = games;
-    });
+    final fetched = await scoreboard.games();
+    if (games.isEmpty) {
+      setState(() {
+        this.games = fetched;
+      });
+    } else {
+      setState(() {
+        final List<Game> newGames = [];
+        this.games.forEach((game) {
+          if (fetched.contains(game)) {
+            final index = fetched.indexOf(game);
+            final newGame = fetched[index];
+            newGames.add(game.update(
+                newGame.homeScore, newGame.awayScore, newGame.clock));
+          } else {
+            newGames.add(game);
+          }
+        });
+        this.games = newGames;
+      });
+    }
   }
 
   @override

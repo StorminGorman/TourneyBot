@@ -33,10 +33,27 @@ class Game {
     }
   }
 
+  Game update(
+      final String homeScore, final String awayScore, final String clock) {
+    return Game(home, homeScore, away, awayScore,
+        clock: clock, startTime: startTime);
+  }
+
   Game pickHome() => Game(home.pick(), homeScore, away.unpick(), awayScore,
       clock: clock, startTime: startTime);
   Game pickAway() => Game(home.unpick(), homeScore, away.pick(), awayScore,
       clock: clock, startTime: startTime);
 
-  String toString() => "${home.name} ${homeScore} vs ${awayScore} ${away.name}";
+  String toString() => "${home.name} vs ${away.name}";
+
+  @override
+  bool operator ==(Object other) {
+    if (other is Game) {
+      return this.toString() == other.toString();
+    }
+    return false;
+  }
+
+  @override
+  int get hashCode => toString().hashCode;
 }

@@ -28,10 +28,29 @@ class EndGame implements Game {
   String get homeScore => origin.homeScore;
 
   @override
-  Game pickAway() => origin.pickAway();
+  Game pickAway() => this; // no picking after game is over!
   @override
-  Game pickHome() => origin.pickHome();
+  Game pickHome() => this; // no picking after game is over!
 
   @override
   String get startTime => origin.startTime;
+
+  @override
+  String toString() => origin.toString();
+
+  Game update(
+      final String homeScore, final String awayScore, final String clock) {
+    return EndGame(origin.update(homeScore, awayScore, clock));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is Game) {
+      return this.toString() == other.toString();
+    }
+    return false;
+  }
+
+  @override
+  int get hashCode => toString().hashCode;
 }
